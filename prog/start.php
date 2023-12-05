@@ -7,6 +7,7 @@ function startPage(bool $withHtml, string $module = "assets"): void
 {
     session_start();
     set_time_limit(60 * 30); // Temps d'exécution du script en secondes (0 = pas de limite)
+    define("AUTH", true);
     define("ROOT", $_SERVER['DOCUMENT_ROOT'] . "/");
     define("STYLE_VAR", "variables.css");
     define("STYLE_UI", "jquery-ui.css");
@@ -26,13 +27,15 @@ function startPage(bool $withHtml, string $module = "assets"): void
     define("REP_SCRIPTS", ROOT . "scripts/");
     define("REP_LIB", $str . "js/lib/");
     define("REP_MOD", ROOT . "modules/");
-    define('TEL_SOLUTION_30', '01.87.64.02.68');
-    define('TEL_HP_SUPPORT', '01.70.48.53.19');
-    define('TEL_PATRICK', '45 73');
-    define('TEL_SEBASTIEN', '80 92');
-    define('LOCAL_ADMIN_ACCOUNT', 'tfadmin');
+    define('TEL_SOLUTION_30', '');
+    define('TEL_HP_SUPPORT', '');
+    define('LOCAL_ADMIN_ACCOUNT', '');
     spl_autoload_register("loadClass");
-//    if (!Auth::attempt()) die();
+    if (AUTH) {
+        if (!Auth::attempt()) {
+            die();
+        }
+    }
     if ($withHtml) {
         displayHeader($module);
     }
