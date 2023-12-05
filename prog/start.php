@@ -7,7 +7,7 @@ function startPage(bool $withHtml, string $module = "assets"): void
 {
     session_start();
     set_time_limit(60 * 30); // Temps d'exécution du script en secondes (0 = pas de limite)
-    define("AUTH", true);
+    define("AUTH", false);
     define("ROOT", $_SERVER['DOCUMENT_ROOT'] . "/");
     define("STYLE_VAR", "variables.css");
     define("STYLE_UI", "jquery-ui.css");

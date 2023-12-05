@@ -67,6 +67,7 @@ final class View
 
     static function displaySupport(): string
     {
+        if (TEL_HP_SUPPORT === "" || TEL_SOLUTION_30 === "") return "";
         return "
             <div><span>Support HP  :</span><span class='important'>" . TEL_HP_SUPPORT . "</span></div>
             <div><span>Solution 30 :</span><span class='important'>" . TEL_SOLUTION_30 . "</span></div>
@@ -77,8 +78,7 @@ final class View
     {
         return "
             <div style='display: flex; flex-direction: column; gap: 12px;'>
-                <a href='/'>Gestion du stock</a>
-                <a href='/'ocs/README.html' target='_blank'>Voir la documentation</a>
+                <a href='/docs/README.html' target='_blank'>Voir la documentation</a>
             </div>
         ";
     }
