@@ -1,0 +1,17 @@
+:root {
+	--background-color: #f2f2f2;
+	--hightlight: #f89a3ba8;
+	--filter-selected: #f89a3b;
+	--selected: #f89a3b;
+	--form-changed: #f89a3b;
+
+	/* AD & WMI */
+	--wmi: #3a7e26;
+	--ldap: #f89a3b;
+
+	/* Overwrite jQuery UI colors */
+	--ui-main-color: #f89a3b;
+
+	/* Overwrite SweetAlert2 colors */
+	--spinner: #f89a3b;
+}

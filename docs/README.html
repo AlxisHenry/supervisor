@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>&ast;&ast;Introduction&ast;&ast;</title>
+        <style>
+/* From extension vscode.github */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+.vscode-dark img[src$=\#gh-light-mode-only],
+.vscode-light img[src$=\#gh-dark-mode-only] {
+	display: none;
+}
+
+</style>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css">
+<link href="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+<style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        <style>
+.task-list-item {
+    list-style-type: none;
+}
+
+.task-list-item-checkbox {
+    margin-left: -20px;
+    vertical-align: middle;
+    pointer-events: none;
+}
+</style>
+        
+    </head>
+    <body class="vscode-body vscode-light">
+        <h1 id="introduction"><strong>Introduction</strong></h1>
+<p>Ce projet regroupe les informations obtenues à l'aide d'<strong>Active Directory</strong> et de <strong>WMI</strong> sur les ordinateurs du domaine. Il permet d'avoir énorméments d'informations sur les ordinateurs du domaine, d'en modifier certaines, de faire des exports customisés.</p>
+<h1 id="table-des-matières"><strong>Table des matières</strong></h1>
+<ul>
+<li><a href="#introduction"><strong>Introduction</strong></a></li>
+<li><a href="#table-des-mati%C3%A8res"><strong>Table des matières</strong></a></li>
+<li><a href="#documentation-utilisateur"><strong>Documentation utilisateur</strong></a>
+<ul>
+<li><a href="#authentification"><strong>Authentification</strong></a></li>
+<li><a href="#utilisation"><strong>Utilisation</strong></a>
+<ul>
+<li><a href="#ordinateurs"><strong>Ordinateurs</strong></a>
+<ul>
+<li><a href="#liste-des-ordinateurs"><strong>Liste des ordinateurs</strong></a></li>
+<li><a href="#exporter-depuis-la-liste"><strong>Exporter depuis la liste</strong></a></li>
+<li><a href="#fiche-dun-ordinateur"><strong>Fiche d'un ordinateur</strong></a></li>
+<li><a href="#nouvel-ordinateur"><strong>Nouvel ordinateur</strong></a></li>
+</ul>
+</li>
+<li><a href="#r%C3%A9parations"><strong>Réparations</strong></a>
+<ul>
+<li><a href="#liste-des-r%C3%A9parations"><strong>Liste des réparations</strong></a></li>
+<li><a href="#exporter-depuis-la-liste-1"><strong>Exporter depuis la liste</strong></a></li>
+<li><a href="#cr%C3%A9er-une-r%C3%A9paration"><strong>Créer une réparation</strong></a></li>
+<li><a href="#editer-une-r%C3%A9paration"><strong>Editer une réparation</strong></a></li>
+<li><a href="#supprimer-une-r%C3%A9paration"><strong>Supprimer une réparation</strong></a></li>
+</ul>
+</li>
+<li><a href="#mises-%C3%A0-jour"><strong>Mises à jour</strong></a>
+<ul>
+<li><a href="#depuis-lad"><strong>Depuis l'AD</strong></a></li>
+<li><a href="#depuis-wmi"><strong>Depuis WMI</strong></a></li>
+</ul>
+</li>
+<li><a href="#param%C3%A8tres"><strong>Paramètres</strong></a>
+<ul>
+<li><a href="#g%C3%A9rer-les-types"><strong>Gérer les types</strong></a></li>
+<li><a href="#g%C3%A9rer-les-statuts"><strong>Gérer les statuts</strong></a></li>
+<li><a href="#g%C3%A9rer-les-marques"><strong>Gérer les marques</strong></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#documentation-technique"><strong>Documentation technique</strong></a>
+<ul>
+<li><a href="#structure-du-projet"><strong>Structure du projet</strong></a></li>
+<li><a href="#style"><strong>Style</strong></a>
+<ul>
+<li><a href="#utilisation-1"><strong>Utilisation</strong></a></li>
+<li><a href="#classes-pr%C3%A9-d%C3%A9finies"><strong>Classes pré-définies</strong></a>
+<ul>
+<li><a href="#formulaires"><strong>Formulaires</strong></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#javascript"><strong>Javascript</strong></a>
+<ul>
+<li><a href="#utilisation-2"><strong>Utilisation</strong></a></li>
+</ul>
+</li>
+<li><a href="#modules"><strong>Modules</strong></a>
+<ul>
+<li><a href="#utilisation-3"><strong>Utilisation</strong></a></li>
+</ul>
+</li>
+<li><a href="#outils"><strong>Outils</strong></a></li>
+<li><a href="#ajax"><strong>AJAX</strong></a></li>
+<li><a href="#exports"><strong>Exports</strong></a></li>
+<li><a href="#classes"><strong>Classes</strong></a></li>
+</ul>
+</li>
+</ul>
+<h1 id="documentation-utilisateur"><strong>Documentation utilisateur</strong></h1>
+<h2 id="authentification"><strong>Authentification</strong></h2>
+<p>L'autentification se fait à l'aide du même système que celui de la gestion de stock.</p>
+<h2 id="utilisation"><strong>Utilisation</strong></h2>
+<h3 id="ordinateurs"><strong>Ordinateurs</strong></h3>
+<p>Cette application permet de gérer les ordinateurs du domaine ainsi que ceux hors domaine.</p>
+<h4 id="liste-des-ordinateurs"><strong>Liste des ordinateurs</strong></h4>
+<p>Dans l'onglet <code>Ordinateurs</code> se trouve la liste des ordinateurs, cette liste est filtrable par différents critères.</p>
+<ul>
+<li>La recherche,</li>
+<li>Les différents selecteurs,</li>
+<li>Les différents filtres.</li>
+</ul>
+<p>En haut à droite vous avez accès aux actions suivantes :</p>
+<ul>
+<li>Exporter la liste,</li>
+<li>Réinitialiser les filtres.</li>
+</ul>
+<p>L'affichage de la liste est dynamique, dès lors que vous modifiez un filtre, la liste se met à jour automatiquement.</p>
+<p>Dans la liste vous pouvez faire les actions suivantes :</p>
+<ul>
+<li>Voir la fiche d'un ordinateur en cliquant sur sa ligne,</li>
+<li>Enregistrer une nouvelle réparation pour cet ordinateur en cliquant sur l'icon tout à droite de la ligne.</li>
+</ul>
+<h4 id="exporter-depuis-la-liste"><strong>Exporter depuis la liste</strong></h4>
+<p>En cliquant sur le bouton <code>Exporter la liste</code> cela télécharge côté client un fichier csv contenant les informations de la liste au moment du clic.</p>
+<p>C'est à dire que si vous modifiez un filtre, puis que vous cliquez sur le bouton <code>Exporter la liste</code>, le fichier csv contiendra les informations de la liste filtrée.</p>
+<h4 id="fiche-dun-ordinateur"><strong>Fiche d'un ordinateur</strong></h4>
+<p>En cliquant sur une ligne de la liste des ordinateurs, vous accédez à la fiche de l'ordinateur.</p>
+<p>Depuis cette fiche vous avec accès à toutes les informations de l'ordinateur, vous pouvez également modifier certaines informations.</p>
+<h4 id="nouvel-ordinateur"><strong>Nouvel ordinateur</strong></h4>
+<p>En cliquant sur le bouton <code>Nouvel ordinateur</code> vous accédez à un formulaire vous permettant d'ajouter un nouvel ordinateur.</p>
+<h3 id="réparations"><strong>Réparations</strong></h3>
+<p>Cette application permet de gérer les réparations des ordinateurs.</p>
+<h4 id="liste-des-réparations"><strong>Liste des réparations</strong></h4>
+<p>Dans l'onglet <code>Réparations</code> se trouve la liste des réparations, par défaut, uniquement les réparations en cours sont affichées.</p>
+<p>Cette liste est filtrable par différents critères.</p>
+<ul>
+<li>La recherche,</li>
+<li>Les différents selecteurs,</li>
+<li>Les différents filtres.</li>
+</ul>
+<p>En haut à droite vous avez accès aux actions suivantes :</p>
+<ul>
+<li>Exporter la liste,</li>
+<li>Réinitialiser les filtres.</li>
+</ul>
+<p>L'affichage de la liste est dynamique, dès lors que vous modifiez un filtre, la liste se met à jour automatiquement.</p>
+<p>Dans la liste vous pouvez faire les actions suivantes :</p>
+<ul>
+<li>Editer une réparation en cliquant sur l'icon &quot;crayon&quot; tout à droite de la ligne,</li>
+<li>Supprimer une réparation en cliquant sur l'icon &quot;poubelle&quot; tout à droite de la ligne.</li>
+</ul>
+<p>La suppression d'une réparation est définitive, une confirmation vous sera demandée avant la suppression.</p>
+<h4 id="exporter-depuis-la-liste-1"><strong>Exporter depuis la liste</strong></h4>
+<p>Comme pour la liste des ordinateurs, en cliquant sur le bouton <code>Exporter la liste</code> cela télécharge côté client un fichier csv contenant les informations de la liste au moment du clic.</p>
+<p>C'est à dire que si vous modifiez un filtre, puis que vous cliquez sur le bouton <code>Exporter la liste</code>, le fichier csv contiendra les informations de la liste filtrée.</p>
+<h4 id="créer-une-réparation"><strong>Créer une réparation</strong></h4>
+<p>Vous pouvez créer une réparation depuis deux endroits :</p>
+<ul>
+<li>Depuis la liste des ordinateurs en cliquant sur l'icon &quot;plus&quot; tout à droite de la ligne de l'ordinateur,</li>
+<li>Depuis la fiche d'un ordinateur en cliquant sur le bouton <code>Nouvelle réparation</code> dans l'onglet <code>Réparations</code>.</li>
+</ul>
+<p>Dans les deux cas, vous accédez au même formulaire.</p>
+<h4 id="editer-une-réparation"><strong>Editer une réparation</strong></h4>
+<p>Vous pouvez éditer une réparation depuis deux endroits :</p>
+<ul>
+<li>Depuis la fiche d'un ordinateur en cliquant sur le bouton <code>Editer</code> dans l'onglet <code>Réparations</code> en cliquant sur l'icon &quot;crayon&quot; tout à droite de la ligne de la réparation,</li>
+<li>Depuis la liste des réparations en cliquant sur l'icon &quot;crayon&quot; tout à droite de la ligne de la réparation.</li>
+</ul>
+<p>Dans les deux cas, vous accédez au même formulaire.</p>
+<h4 id="supprimer-une-réparation"><strong>Supprimer une réparation</strong></h4>
+<p>Vous pouvez supprimer une réparation depuis deux endroits :</p>
+<ul>
+<li>Depuis la fiche d'un ordinateur en cliquant sur le bouton <code>Supprimer</code> dans l'onglet <code>Réparations</code> en cliquant sur l'icon &quot;poubelle&quot; tout à droite de la ligne de la réparation,</li>
+<li>Depuis la liste des réparations en cliquant sur l'icon &quot;poubelle&quot; tout à droite de la ligne de la réparation.</li>
+</ul>
+<p>Dans les deux cas, une confirmation vous sera demandée avant la suppression.</p>
+<h3 id="mises-à-jour"><strong>Mises à jour</strong></h3>
+<p>L'applications permet de mettre à jour les informations des ordinateurs de la base de données et d'en ajouter de nouveaux à l'aide d'AD et de WMI.</p>
+<h4 id="depuis-lad"><strong>Depuis l'AD</strong></h4>
+<p>En cliquant sur le bouton <code>Depuis l'AD</code> cela déclenche une mise à jour des informations des ordinateurs de la base de données à l'aide de l'AD.</p>
+<p>Dans le cas où les ordinateurs ne sont pas encore dans la base de données, ils seront ajoutés.</p>
+<h4 id="depuis-wmi"><strong>Depuis WMI</strong></h4>
+<p>En cliquant sur le bouton <code>Depuis WMI</code> cela déclenche une mise à jour des informations des ordinateurs de la base de données à l'aide de WMI.</p>
+<p>Dans le cas où les ordinateurs ne sont pas dans le domaine, les requêtes WMI échoueront et les informations ne seront pas mises à jour.</p>
+<h3 id="paramètres"><strong>Paramètres</strong></h3>
+<p>Certains paramètres de l'application sont modifiables depuis l'onglet <code>Paramètres</code>.</p>
+<h4 id="gérer-les-types"><strong>Gérer les types</strong></h4>
+<p>Vous pouvez gérer les types d'ordinateurs depuis l'onglet <code>Paramètres</code> en cliquant sur le bouton <code>Gérer les types</code>.</p>
+<h4 id="gérer-les-statuts"><strong>Gérer les statuts</strong></h4>
+<p>Vous pouvez gérer les statuts des ordinateurs depuis l'onglet <code>Paramètres</code> en cliquant sur le bouton <code>Gérer les statuts</code>.</p>
+<h4 id="gérer-les-marques"><strong>Gérer les marques</strong></h4>
+<p>Vous pouvez gérer les marques des ordinateurs depuis l'onglet <code>Paramètres</code> en cliquant sur le bouton <code>Gérer les marques</code>.</p>
+<h1 id="documentation-technique"><strong>Documentation technique</strong></h1>
+<h2 id="structure-du-projet"><strong>Structure du projet</strong></h2>
+<ul>
+<li>Dossier <code>classes</code> : contient les classes php du projet</li>
+<li>Dossier <code>css</code> : contient les fichiers css du projet</li>
+<li>Dossier <code>js</code> : contient les fichiers javascript du projet</li>
+<li>Dossier <code>mod</code> : contient les fichiers de modules utilisés sur le site</li>
+<li>Dossier <code>tools</code> : contient les fichiers d'outils utilisés sur le site</li>
+<li>Dossier <code>prog</code> : contient les fichiers de lancement du site</li>
+<li>Dossier <code>docs</code> : contient les fichiers de documentation du projet</li>
+</ul>
+<h2 id="style"><strong>Style</strong></h2>
+<p>Le dossier <code>css</code> contient les fichiers css du projet.</p>
+<ul>
+<li>Le fichier <code>variables.css</code> contient les variables css utilisées sur le site et est appelé sur toutes les pages du site en premier.</li>
+<li>Le fichier <code>main.css</code> est appelé sur toutes les pages du site.</li>
+</ul>
+<h3 id="utilisation-1"><strong>Utilisation</strong></h3>
+<p>En créant une variable dans le fichier variables.css, celle-ci sera disponible sur toutes les pages du site.</p>
+<pre><code class="language-css">variables<span class="hljs-selector-class">.css</span>
+
+<span class="hljs-selector-pseudo">:root</span> {
+	<span class="hljs-attr">--my-variable</span>: <span class="hljs-number">#000</span>;
+}
+</code></pre>
+<pre><code class="language-css"><span class="hljs-selector-tag">main</span><span class="hljs-selector-class">.css</span>
+
+<span class="hljs-selector-tag">body</span> {
+		<span class="hljs-attribute">background-color</span>: <span class="hljs-built_in">var</span>(--my-variable);
+}
+</code></pre>
+<h3 id="classes-pré-définies"><strong>Classes pré-définies</strong></h3>
+<h4 id="formulaires"><strong>Formulaires</strong></h4>
+<ul>
+<li><code>.form</code> : formulaire</li>
+<li><code>.form-group</code> : groupe de champs de formulaire</li>
+<li><code>.form-group-column</code> : groupe de champs de formulaire en colonne</li>
+<li><code>.form-section</code> : section de plusieurs groupes</li>
+<li><code>.form-element</code> : conteneur d'un champ de formulaire (label + input)</li>
+<li><code>.form-element-extended</code> : conteneur d'un champ de formulaire étendu (flex: 1)</li>
+<li><code>.form-label</code> : label d'un champ de formulaire</li>
+<li><code>.form-input</code> : input d'un champ de formulaire</li>
+<li><code>.form-select</code> : select d'un champ de formulaire</li>
+<li><code>.form-select-extended</code> : select d'un champ de formulaire étendu (width: 100%)</li>
+<li><code>.form-date</code> : input date d'un champ de formulaire</li>
+<li><code>.form-button</code> : bouton d'un champ de formulaire</li>
+<li><code>.form-spacing</code> : permet d'ajouter un espacement entre les éléments d'un formulaire</li>
+</ul>
+<h2 id="javascript"><strong>Javascript</strong></h2>
+<p><em>L'application utilise jQuery et Jquery UI.</em></p>
+<p>Le dossier <code>js</code> contient les fichiers javascript du projet.</p>
+<ul>
+<li>Le fichier <code>functions.js</code> contient les fonctions javascript utilisées sur le site : il est appelé sur toutes les pages du site en premier.</li>
+<li>Le fichier <code>main.js</code> est appelé sur toutes les pages du site.</li>
+</ul>
+<p>Le dossir <code>js/pages</code> contient les fichiers javascript spécifiques à chaque page du site.</p>
+<p>Le dossier <code>js/lib</code> contient les fichiers javascript de librairies externes.</p>
+<h3 id="utilisation-2"><strong>Utilisation</strong></h3>
+<p>En créant une fonction dans le fichier function.js, celle-ci sera disponible sur toutes les pages du site.</p>
+<pre><code class="language-javascript">functions.<span class="hljs-property">js</span>
+
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">myFunction</span>(<span class="hljs-params"></span>) {
+		<span class="hljs-comment">// code</span>
+}
+</code></pre>
+<pre><code class="language-javascript">main.<span class="hljs-property">js</span>
+
+$(<span class="hljs-variable language_">document</span>).<span class="hljs-title function_">ready</span>(<span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) {
+		<span class="hljs-title function_">myFunction</span>();
+});
+</code></pre>
+<h2 id="modules"><strong>Modules</strong></h2>
+<p>Le dossier <code>mod</code> contient les fichiers de modules utilisés sur le site.</p>
+<p>Chaque page possède un paramètre en get <code>mod</code> qui permet de charger un module spécifique sur la page.</p>
+<h3 id="utilisation-3"><strong>Utilisation</strong></h3>
+<p>Pour utiliser un module, il faut ajouter le paramètre <code>mod</code> dans l'url de la page.
+Si un module existe avec le nom passé en paramètre, il sera chargé sur la page.</p>
+<h2 id="outils"><strong>Outils</strong></h2>
+<h2 id="ajax"><strong>AJAX</strong></h2>
+<p>Les requêtes AJAX pointent vers les fichiers php du dossier situés dans <code>./tools/ajax/</code>.</p>
+<h2 id="exports"><strong>Exports</strong></h2>
+<p>Les fichiers réalisant les exports sous format CSV ou autres se situent dans <code>./tools/exports/</code>.</p>
+<h2 id="classes"><strong>Classes</strong></h2>
+<ul>
+<li>La classe <code>Ldap.class.php</code> permet d'effectuer des requêtes LDAP.</li>
+<li>La classe <code>Wmi.class.php</code> permet d'effectuer des requêtes WMI à partir d'un nom d'hôte.</li>
+<li>La classe <code>Fonctions.class.php</code> contient les  fonctions utiles pour le projet.</li>
+<li>La classe <code>DB.class.php</code> contient les fonctions liées à la base de données.</li>
+<li>La classe <code>Display.class.php</code> contient les fonctions liées à l'affichage.</li>
+<li>La classe <code>Filter.class.php</code> contient les fonctions liées aux filtres.</li>
+<li>La classe <code>View.class.php</code> contient les fonctions utilisées à la création des vues (header, css, js, etc.).</li>
+<li>La classe <code>Select.class.php</code> contient les fonctions permettant de générer des selects.</li>
+<li>La classe <code>P_matos.class.php</code> permet de traiter les données de la table <code>matos</code> de la base de données sous forme d'objet.</li>
+</ul>
+
+        <script async src="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.js"></script>
+        
+    </body>
+    </html>
