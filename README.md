@@ -11,6 +11,14 @@ This is one of my first project in PHP. This is a supervisor of the assets of a 
 
 ## What is it ?
 
+*Global view of the assets, where you can search using the filters.*
+
+![Capture d'écran 2023-12-05 125454](https://github.com/AlxisHenry/supervisor/assets/91117127/4d5bbda8-c96a-4a8b-87ac-10074de5d25a)
+
+*Asset page where you can find all informations and actions that you can perform on a specific asset.*
+
+![Capture d'écran 2023-12-05 125554](https://github.com/AlxisHenry/supervisor/assets/91117127/93287805-b3a6-4af4-b08f-d746760b6d91)
+
 ## Features
 
 - Auth system that allows only specified windows users
